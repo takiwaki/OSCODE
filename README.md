@@ -28,3 +28,5 @@ The RK4 and Crank Nicolson method is consistent with the analytic one.
 ## References
 
 http://cms.phys.s.u-tokyo.ac.jp/~naoki/CIPINTRO/CIP/wave.html
+
+http://www-solid.eps.s.u-tokyo.ac.jp/~ataru/edu/ensyu1.pdf
