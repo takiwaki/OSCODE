@@ -23,3 +23,8 @@ The Euler method diverge and backward Euler method diminishes.
 ![figure 2](/img/t-x_zoom.png)
 
 The RK4 and Crank Nicolson method is consistent with the analytic one.
+
+
+## References
+
+http://cms.phys.s.u-tokyo.ac.jp/~naoki/CIPINTRO/CIP/wave.html
