@@ -44,11 +44,21 @@
       x = 1.0d0
       y = 0.0d0
       do nstp =0, nmax
-      call backEuler
+      call backEulerSI
       call output("bEu") 
       t=t+dt
       enddo
       write(6,*) "bEu: r=",sqrt(x**2+y**2)
+
+      t = 0.0d0
+      x = 1.0d0
+      y = 0.0d0
+      do nstp =0, nmax
+      call CrankNicolsonSI
+      call output("CrN") 
+      t=t+dt
+      enddo
+      write(6,*) "CrN: r=",sqrt(x**2+y**2)
 
       t = 0.0d0
       x = 1.0d0
@@ -168,21 +178,6 @@
       return
       end subroutine RK4
 !==========================================
-      subroutine backEuler
-      use fields
-      implicit none
-      real(8)::f1,f2
-      real(8)::df1dx,df1dy,df2dx,df2dy
-      real(8)::dxodf1,   dyodf1,dxodf2,    dyodf2
-      call rhs(x,y,f1,f2)
-      call jacobian(x,y,df1dx,df1dy,df2dx,df2dy)
-      call invmtrix(1.0d0-dt*df1dx,-dt*df1dy,-dt*df2dx,1.0d0-dt*df2dy
-     &                   ,dxodf1,   dxodf2,   dyodf1,    dyodf2)
-      x = x + f1*dt*dxodf1+ f2*dt*dxodf2
-      y = y + f1*dt*dyodf1+ f2*dt*dyodf2
-      return
-      end subroutine backEuler
-!==========================================
       subroutine backEulerSI
       use fields
       implicit none
@@ -197,5 +192,19 @@
       y = y + f1*dt*dyodf1+ f2*dt*dyodf2
       return
       end subroutine backEulerSI
-
+!==========================================
+      subroutine CrankNicolsonSI
+      use fields
+      implicit none
+      real(8)::f1,f2
+      real(8)::df1dx,df1dy,df2dx,df2dy
+      real(8)::dxodf1,   dyodf1,dxodf2,    dyodf2
+      call rhs(x,y,f1,f2)
+      call jacobian(x,y,df1dx,df1dy,df2dx,df2dy)
+      call invmtrix(1.0d0-dt*df1dx,-dt*df1dy,-dt*df2dx,1.0d0-dt*df2dy
+     &                   ,dxodf1,   dxodf2,   dyodf1,    dyodf2)
+      x = x + (f1*dt*dxodf1+ f2*dt*dxodf2+f1*dt)/2.0d0
+      y = y + (f1*dt*dyodf1+ f2*dt*dyodf2+f2*dt)/2.0d0
+      return
+      end subroutine CrankNicolsonSI
 !==========================================
