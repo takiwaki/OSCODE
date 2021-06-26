@@ -1,6 +1,6 @@
 # OSCODE
 
-Solve oscillation equation numerically.  
+Solve oscillation equation numerically. Here x is a complex number.
 
 ![\begin{align*}
 \frac{{\rm d}x}{{\rm d }t}=\imath \omega x 
