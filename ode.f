@@ -4,6 +4,7 @@
       integer:: nstp,nmax
       real(8):: t,dt
       real(8):: x,y
+      real(8):: xa,ya
 
       end module fields
 
@@ -16,7 +17,7 @@
       use param
       use fields
       implicit none
-      nmax =10000
+      nmax =50000
       omega=1.0d0
       dt = 0.01d0
 
@@ -25,6 +26,7 @@
       y = 0.0d0
       do nstp =0, nmax
       call analytic
+      call reference
       call output("ana")
       t=t+dt
       enddo
@@ -35,6 +37,7 @@
       y = 0.0d0
       do nstp =0, nmax
       call Euler
+      call reference
       call output("fEu")
       t=t+dt
       enddo
@@ -44,7 +47,8 @@
       x = 1.0d0
       y = 0.0d0
       do nstp =0, nmax
-      call backEulerSI
+      call backEuler
+      call reference
       call output("bEu") 
       t=t+dt
       enddo
@@ -54,17 +58,30 @@
       x = 1.0d0
       y = 0.0d0
       do nstp =0, nmax
-      call CrankNicolsonSI
-      call output("CrN") 
+      call CrankNicolson
+      call reference
+      call output("CNi") 
       t=t+dt
       enddo
-      write(6,*) "CrN: r=",sqrt(x**2+y**2)
+      write(6,*) "CNi: r=",sqrt(x**2+y**2)
+
+      t = 0.0d0
+      x = 1.0d0
+      y = 0.0d0
+      do nstp =0, nmax
+      call CrankNicolsonSI
+      call reference
+      call output("CNs") 
+      t=t+dt
+      enddo
+      write(6,*) "CNs: r=",sqrt(x**2+y**2)
 
       t = 0.0d0
       x = 1.0d0
       y = 0.0d0
       do nstp =0, nmax
       call RK4
+      call reference
       call output("RK4")
       t=t+dt
       enddo
@@ -121,7 +138,7 @@
       endif
 
       if(mod(nstp,10)==0)then
-      write(unitout,'(3(1x,E15.6e3))') t,x,y
+      write(unitout,'(5(1x,E15.6e3))') t,x,y,xa,ya
       endif
       if(nstp==nmax)then
       close(unitout) 
@@ -139,6 +156,17 @@
 
       return
       end subroutine analytic
+
+      subroutine reference()
+      use param
+      use fields
+      implicit none
+      xa=cos(omega*t)
+      ya=sin(omega*t)
+
+      return
+      end subroutine reference
+
 !==========================================
       subroutine Euler
       use fields
@@ -192,7 +220,50 @@
       y = y + f1*dt*dyodf1+ f2*dt*dyodf2
       return
       end subroutine backEulerSI
+      subroutine backEuler
+      use fields
+      implicit none
+      real(8)::f1,f2
+      real(8)::df1dx,df1dy,df2dx,df2dy
+      real(8):: a,b,c,d
+      real(8):: xnew,ynew
+
+      call rhs(x,y,f1,f2)
+      call jacobian(x,y,df1dx,df1dy,df2dx,df2dy)
+      call invmtrix(1.0d0-dt*df1dx,-dt*df1dy,-dt*df2dx,1.0d0-dt*df2dy
+     &                   ,a,   b,   c,    d)
+      xnew = a*x+b*y
+      ynew = c*x+d*y
+      
+      x=xnew
+      y=ynew
+
+      return
+      end subroutine backEuler
 !==========================================
+      subroutine CrankNicolson
+      use fields
+      implicit none
+      real(8)::f1,f2
+      real(8)::df1dx,df1dy,df2dx,df2dy
+      real(8):: a,b,c,d
+      real(8):: xnew,ynew
+      real(8):: f1new,f2new
+
+      call rhs(x,y,f1,f2)
+      call jacobian(x,y,df1dx,df1dy,df2dx,df2dy)
+      call invmtrix(1.0d0-dt*df1dx,-dt*df1dy,-dt*df2dx,1.0d0-dt*df2dy
+     &                   ,a, b, c, d)
+      xnew = a*x+b*y
+      ynew = c*x+d*y
+      f1new= (xnew-x)/dt
+      f2new= (ynew-y)/dt
+
+      x = x + (f1new*dt +f1*dt)/2.0d0
+      y = y + (f2new*dt +f2*dt)/2.0d0
+
+      return
+      end subroutine CrankNicolson
       subroutine CrankNicolsonSI
       use fields
       implicit none
@@ -207,4 +278,5 @@
       y = y + (f1*dt*dyodf1+ f2*dt*dyodf2+f2*dt)/2.0d0
       return
       end subroutine CrankNicolsonSI
+
 !==========================================
