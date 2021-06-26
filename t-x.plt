@@ -29,9 +29,9 @@ if(pngflag==1) set output "t-x.png"
 plot NaN notitle \
 , inputana u 1:2 w l ls 7 title "analytic" \
 , inputfEu u 1:2 w l ls 2 title "Euler"  \
-, inputbEu u 1:2 w l ls 4 title "backward Euler"  \
-, inputCNi u 1:2 w l ls 1 title "Crank Nicolson"  \
-, inputRK4 u 1:2 w l ls 3 title "RK4" \
+, inputbEu u 1:2 w l ls 5 title "backward Euler"  \
+#, inputCNi u 1:2 w l ls 1 title "Crank Nicolson"  \
+#, inputRK4 u 1:2 w l ls 3 title "RK4" \
 
 if(pngflag==1) set output "t-x_zoom.png"
 set xrange [490:*]
@@ -51,7 +51,7 @@ set log y
 set xrange [*:10]
 plot NaN notitle \
 , inputfEu u 1:(abs($2-$4))   w l ls 2 title "Euler"  \
-, inputbEu u 1:(abs($2-$4))   w l ls 4 title "backward Euler"  \
+, inputbEu u 1:(abs($2-$4))   w l ls 5 title "backward Euler"  \
 , inputCNi u 1:(abs($2-$4)*2) w l ls 1 title "Crank Nicolson(x2)"  \
 , inputRK4 u 1:(abs($2-$4))   w l ls 3 title "RK4" \
 
