@@ -24,6 +24,8 @@ The Euler method diverge and backward Euler method diminishes.
 
 The RK4 and Crank Nicolson method is consistent with the analytic one.
 
+![figure 3](/img/t-xerr_fin.png)
+The error of Crank Nicolson method is smaller than that of RK4.
 
 ## References
 
