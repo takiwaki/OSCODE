@@ -26,7 +26,8 @@ The RK4 and Crank Nicolson method is consistent with the analytic one.
 
 ![figure 3](/img/t-xerr_fin.png)
 
-The error of Crank Nicolson method is smaller than that of RK4.
+The error of Crank Nicolson method is smaller than that of RK4 in this time range.
+Note that the error of RK4 can be smaller than Crank Nicolson at later time.
 
 ## References
 
