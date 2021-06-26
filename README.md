@@ -1,6 +1,6 @@
 # OSCODE
 
-Solve oscillation equation numerically.  
+Solve oscillation equation numerically. Here x is a complex number.
 
 ![\begin{align*}
 \frac{{\rm d}x}{{\rm d }t}=\imath \omega x 
@@ -10,9 +10,9 @@ Solve oscillation equation numerically.
 The analyric solution of this equation is as follows.  
 
 ![\begin{align*}
-x = \sin (\omega t )+ \imath \cos (\omega t )
+x = \cos(\omega t )+ \imath \sin (\omega t )
 \end{align*}
-](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0Ax+%3D+%5Csin+%28%5Comega+t+%29%2B+%5Cimath+%5Ccos+%28%5Comega+t+%29%0A%5Cend%7Balign%2A%7D%0A)
+](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0Ax+%3D+%5Ccos%28%5Comega+t+%29%2B+%5Cimath+%5Csin+%28%5Comega+t+%29%0A%5Cend%7Balign%2A%7D%0A)
 
 ## Results
 
@@ -25,6 +25,7 @@ The Euler method diverge and backward Euler method diminishes.
 The RK4 and Crank Nicolson method is consistent with the analytic one.
 
 ![figure 3](/img/t-xerr_fin.png)
+
 The error of Crank Nicolson method is smaller than that of RK4.
 
 ## References
