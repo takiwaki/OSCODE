@@ -20,7 +20,7 @@ set key left top
 set xlabel "t"
 set xrange [0:100]
 
-set ylabel "x"
+set ylabel "Re(x)"
 
 if(pngflag==1) set terminal push
 if(pngflag==1) set terminal pngcairo
@@ -46,7 +46,7 @@ replot
 
 if(pngflag==1) set output "t-xerr_ini.png"
 set key left bottom
-set ylabel "Error of x"
+set ylabel "Error of Re(x)"
 set log y
 set xrange [*:10]
 plot NaN notitle \
