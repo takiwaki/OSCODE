@@ -4,6 +4,11 @@
 # 
 *.mod
 *.o
+*.x
+
 # data
 *.dat
 
+# file
+*.png
+!img/*.png
