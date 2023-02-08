@@ -17,7 +17,7 @@ x = \cos(\omega t )+ \imath \sin (\omega t )
 ## Instruction
 This is the instruction for spring school of division of science. First login the server, more.
 
-    ssh <your accout>@more.cfca.nao.ac.jp
+    ssh <your account>@more.cfca.nao.ac.jp
     
 Then copy the source code.
 
@@ -34,7 +34,7 @@ You find the binary file, `ode.x`. In the supercomputer you submit the system us
     
 After the data is damped, you go to analysis server. Here ?? below is 09-14.
 
-    ssh <your accout>@an??.cfca.nao.ac.jp
+    ssh <your account>@an??.cfca.nao.ac.jp
     
 Then plot the file.
 
