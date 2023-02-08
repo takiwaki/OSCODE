@@ -26,6 +26,7 @@ Then copy the source code.
     
 Then compile it. Now we use intel compiler.
 
+    cd OSCCODE
     module load intel
     make
     
