@@ -21,6 +21,7 @@ This is the instruction for spring school of division of science. First login th
     
 Then copy the source code.
 
+    cd /cfca-work/<your account>
     cp -r /cfca-work/dos00/OSCCODE .
     
 Then compile it. Now we use intel compiler.
@@ -38,6 +39,7 @@ After the data is damped, you go to analysis server. Here ?? below is 09-14.
     
 Then plot the file.
 
+    cd /cfca-work/<your account>/OSCODE
     module load gnuplot
     gnuplot t-x.plt
     display t-x.png
