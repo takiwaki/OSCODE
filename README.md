@@ -15,7 +15,11 @@ x = \cos(\omega t )+ \imath \sin (\omega t )
 ](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0Ax+%3D+%5Ccos%28%5Comega+t+%29%2B+%5Cimath+%5Csin+%28%5Comega+t+%29%0A%5Cend%7Balign%2A%7D%0A)
 
 ## Instruction
-This is the instruction for spring school of division of science. First copy the source code.
+This is the instruction for spring school of division of science. First login the server, more.
+
+    ssh <your accout>@more.cfca.nao.ac.jp
+    
+Then copy the source code.
 
     cp -r /cfca-work/dos00/OSCCODE .
     
@@ -28,8 +32,16 @@ You find the binary file, `ode.x`. In the supercomputer you submit the system us
 
     qsub pbs_more.sh
     
+After the data is damped, you go to analysis server. Here ?? below is 09-14.
 
+    ssh <your accout>@an??.cfca.nao.ac.jp
+    
+Then plot the file.
 
+    module load gnuplot
+    gnuplot t-x.plt
+    display t-x.png
+    
 ## Results
 
 ![figure 1](/img/t-x.png)
