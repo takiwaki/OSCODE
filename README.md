@@ -1,3 +1,5 @@
+This is the branch for [Spring school 2023 of Divison of Science](https://sci.nao.ac.jp/projects/ss2023/index.html), NAOJ.
+
 # OSCODE
 
 Solve oscillation equation numerically. Here x is a complex number.
