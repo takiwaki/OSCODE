@@ -14,6 +14,16 @@ x = \cos(\omega t )+ \imath \sin (\omega t )
 \end{align*}
 ](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0Ax+%3D+%5Ccos%28%5Comega+t+%29%2B+%5Cimath+%5Csin+%28%5Comega+t+%29%0A%5Cend%7Balign%2A%7D%0A)
 
+## How to run
+
+    git clone https://github.com/takiwaki/OSCODE.git
+    cd OSCCODE
+    make
+    ./ode.x
+    gnuplot t-x.plt
+
+
+
 ## Results
 
 ![figure 1](/img/t-x.png)
