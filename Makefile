@@ -1,15 +1,15 @@
 
-EXE       = ode.x
+EXE   = ode.x
 
-FC    = ifort -c -extend-source 
-FCb   = ifort
-OPTS  = -g -traceback -O2
+FC    = gfortran
+OPTS  = -g -fbacktrace -O2
 
-.f.o: 
-	${FC} ${OPTS} $<
+.SUFFIXES: .f90 .o
+.f90.o: 
+	${FC} ${OPTS} -c $<
 
 ${EXE}: ode.o
-	${FCb} ${OPTS} $< -o $@
+	${FC} ${OPTS} $< -o $@
 
 clean:
 	rm -fr *.o *.mod ${EXE}
