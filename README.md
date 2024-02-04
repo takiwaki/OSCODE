@@ -17,7 +17,7 @@ x = \cos(\omega t )+ \imath \sin (\omega t )
 ## How to run
 
     git clone https://github.com/takiwaki/OSCODE.git
-    cd OSCCODE
+    cd OSCODE
     make
     ./ode.x
     gnuplot t-x.plt
