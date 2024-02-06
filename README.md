@@ -2,17 +2,10 @@
 
 Solve oscillation equation numerically. Here x is a complex number.
 
-![\begin{align*}
-\frac{{\rm d}x}{{\rm d }t}=\imath \omega x 
-\end{align*}
-](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0A%5Cfrac%7B%7B%5Crm+d%7Dx%7D%7B%7B%5Crm+d+%7Dt%7D%3D%5Cimath+%5Comega+x+%0A%5Cend%7Balign%2A%7D%0A)
+$\frac{{\rm d}x}{{\rm d }t}=\imath \omega x $
 
 The analyric solution of this equation is as follows.  
-
-![\begin{align*}
-x = \cos(\omega t )+ \imath \sin (\omega t )
-\end{align*}
-](https://render.githubusercontent.com/render/math?math=%5Cdisplaystyle+%5Cbegin%7Balign%2A%7D%0Ax+%3D+%5Ccos%28%5Comega+t+%29%2B+%5Cimath+%5Csin+%28%5Comega+t+%29%0A%5Cend%7Balign%2A%7D%0A)
+$x = \cos(\omega t )+ \imath \sin (\omega t )$
 
 ## How to run
 
